@@ -49,7 +49,7 @@
                 responsive="sm"
             >
                 <template #cell(automation_switch)><b-form-checkbox switch size="lg"></b-form-checkbox></template>
-                <template #cell(action)> <font-awesome-icon icon="fa-solid fa-user-secret" /></template>
+                <template #cell(action)>  <font-awesome-icon icon="edit" /></template>
             </b-table>
             <b-pagination
                 v-model="currentPage"
