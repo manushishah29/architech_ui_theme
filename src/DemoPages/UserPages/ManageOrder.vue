@@ -58,7 +58,7 @@
                 </template>
                 <template #cell(automation_switch)><b-form-checkbox switch size="lg" style="cursor: pointer"></b-form-checkbox></template>
             <template #cell(action)>
-                <b-dropdown no-caret="true" class="p-0 mr-2" variant="link" right>
+                <b-dropdown no-caret class="p-0 mr-2" variant="link" right>
                             <span slot="button-content">
                                   <font-awesome-icon icon="ellipsis-v" />
                             </span>

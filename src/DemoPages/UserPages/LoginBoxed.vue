@@ -6,6 +6,8 @@
 <!--                    <div class="app-logo-inverse mx-auto mb-3"/>-->
 
                     <div class="modal-dialog w-100 mx-auto">
+                        <validation-observer ref="loginForm" #default="{ invalid }">
+                        <b-form @submit.prevent="onSubmit">
                         <div class="modal-content">
                             <div class="modal-body">
                                 <div class="h5 modal-title text-center">
@@ -15,32 +17,35 @@
                                     </h4>
                                 </div>
                                 <b-form-group id="exampleInputGroup1"
-                                              label-for="exampleInput1"
-                                              description="We'll never share your email with anyone else.">
-                                    <Label for="exampleEmail">Email</Label>
-                                    <b-form-input id="exampleInput1"
-                                                  type="email"
-                                                  required
-                                                  placeholder="Enter email...">
-                                    </b-form-input>
+                                              label-for="exampleInput1">
+                                    <validation-provider
+                                        #default="{errors }"
+                                        name="Email"
+                                        rules="required|email"
+                                    >
+                                        <label>Email </label>
+                                        <b-form-input id="exampleInput1"
+                                                      v-model="user_email"
+                                                      type="email"
+                                                      :state="errors.length > 0 ? false : null"
+                                                      placeholder="Enter email...">
+                                        </b-form-input>
+                                        <small class="text-danger">{{ errors[0] }}</small>
+                                    </validation-provider>
                                 </b-form-group>
                                 <b-form-group id="exampleInputGroup2"
-                                              label-for="exampleInput2">
-                                    <Label for="exampleEmail">Password</Label>
-                                    <b-form-input id="exampleInput2"
-                                                  type="password"
-                                                  required
-                                                  placeholder="Enter password...">
-                                    </b-form-input>
-                                </b-form-group>
-<!--                                <b-form-checkbox name="check" id="exampleCheck">-->
-<!--                                    Keep me logged in-->
-<!--                                </b-form-checkbox>-->
-<!--                                <div class="divider"/>-->
-<!--                                <h6 class="mb-0">-->
-<!--                                    No account?-->
-<!--                                    <a href="javascript:void(0);" class="text-primary">Sign up now</a>-->
-<!--                                </h6>-->
+                                                  label-for="exampleInput2">
+                                    <validation-provider name="Password" rules="required|max:12|min:6" #default="{ errors }">
+                                        <Label>Password</Label>
+                                        <b-form-input id="exampleInput2"
+                                                      type="password"
+                                                      :state="errors.length > 0 ? false : null"
+                                                      v-model="password"
+                                                      placeholder="Enter password...">
+                                        </b-form-input>
+                                        <small class="text-danger">{{ errors[0] }}</small>
+                                    </validation-provider>
+                                    </b-form-group>
                             </div>
                             <div class="modal-footer clearfix">
                                 <div class="float-left">
@@ -48,10 +53,12 @@
                                         Password</a>
                                 </div>
                                 <div class="float-right">
-                                    <b-button variant="primary" size="lg" @click="getDashboard">Login</b-button>
+                                    <b-button variant="primary" type="submit" size="lg">Login</b-button>
                                 </div>
                             </div>
                         </div>
+                        </b-form>
+                        </validation-observer>
                     </div>
                     <div class="text-center text-white opacity-8 mt-3">
                         Copyright &copy; Kavisha 2023
@@ -62,9 +69,38 @@
     </div>
 </template>
 <script>
+import {ValidationObserver,ValidationProvider} from "vee-validate";
+import {required,email, max, min} from "@/lib/Validators";
+
 export default {
     name:'Login',
+    data(){
+        return{
+            required,
+            email,
+            user_email: '',
+            password: '',
+            max,
+            min
+        }
+    },
+    components:{
+      ValidationProvider,
+      ValidationObserver,
+
+    },
     methods: {
+
+       async onSubmit(){
+            const result = await this.$refs.loginForm.validate();
+            // eslint-disable-next-line no-console
+            console.log('Submit successfull', result)
+           if(result){
+               this.getDashboard()
+           }
+
+            // this.getDashboard()
+        },
         getDashboard(){
             this.$router.push({
                 name:'Dashboard',

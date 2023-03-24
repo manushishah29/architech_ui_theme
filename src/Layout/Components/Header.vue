@@ -2,9 +2,9 @@
     <div class="app-header header-shadow">
         <div class="logo-src"/>
         <div class="app-header__content">
-            <!--            <div class="app-header-left">-->
-            <!--                <SearchBox/>-->
-            <!--            </div>-->
+<!--                        <div class="app-header-left mt-">-->
+                            <AppBreadCrumbs class="mx-3 mt-3" />
+<!--                        </div>-->
             <div class="app-header-right">
                 <UserArea/>
             </div>
@@ -34,6 +34,7 @@
 
 // import SearchBox from './Header/SearchBox';
 import UserArea from './Header/HeaderUserArea';
+import AppBreadCrumbs from "@/DemoPages/UserPages/AppBreadCrumbs.vue";
 
 import {library} from '@fortawesome/fontawesome-svg-core'
 import {
@@ -49,6 +50,7 @@ export default {
     components: {
         // SearchBox,
         UserArea,
+        AppBreadCrumbs,
         'font-awesome-icon': FontAwesomeIcon,
     },
 

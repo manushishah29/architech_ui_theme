@@ -3,6 +3,7 @@
         <b-modal
             v-model="showModal"
             size="xl"
+            class="model-body-content"
             title="Add Script"
             hide-backdrop
             @hide="closeModal"
@@ -36,7 +37,8 @@
             <template #modal-footer>
                 <div>
                     <b-button
-                        size="sm"
+                        size="lg"
+                        style="background: #4e77a8;border-color: #4e77a8; border-radius: 0.25rem;color: white"
                         @click="closeModal">
                         Close
                     </b-button>
@@ -98,6 +100,11 @@ export default {
 }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
+.model-body-content {
+    height: 100%;
+    overflow: auto;
+    overflow-x: hidden;
 
+}
 </style>

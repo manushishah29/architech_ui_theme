@@ -18,9 +18,9 @@
             <tab-content title="AlgofoxAuto">
                 <fifth-step></fifth-step>
             </tab-content>
-
-
         </form-wizard>
+
+
     </b-card>
 
 </template>

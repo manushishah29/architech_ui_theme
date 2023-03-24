@@ -11,7 +11,7 @@ import { library } from '@fortawesome/fontawesome-svg-core'
 
 import {faUserSecret, faShoppingCart, faEllipsisV, faPlus} from '@fortawesome/free-solid-svg-icons'
 import VueStepWizard from 'vue-step-wizard'
-import 'vue-step-wizard/dist/vue-step-wizard.css'
+import 'vue-step-wizard/dist/vue-step-wizard.css';
 
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 

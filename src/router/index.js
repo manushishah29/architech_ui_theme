@@ -3,6 +3,7 @@ import Router from 'vue-router'
 
 Vue.use(Router);
 
+
 const router = new Router({
     mode: 'history',
     scrollBehavior() {
@@ -52,7 +53,7 @@ const router = new Router({
             component: () => import('../DemoPages/UserPages/ChangePassword.vue'),
         },
         {
-            path: '/manageOrder',
+            path: '/project1/manageOrder',
             name: 'ManageOrder',
             component: () => import('../DemoPages/UserPages/ManageOrder.vue'),
         },

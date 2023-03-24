@@ -7,11 +7,13 @@
 
                         <b-form-group id="exampleInputGroup2"
                                       label-for="exampleInput2">
-                            <label>Traget-Stoploss Type : :</label>
-                            <b-dropdown id="dropdown-offset" offset="25" text="Select Target Stoploss Type" class="w-100">
-                                <b-dropdown-item href="#">Point</b-dropdown-item>
-                                <b-dropdown-item href="#">Percent</b-dropdown-item>
-                            </b-dropdown>
+                            <label>Traget-Stoploss Type :</label>
+                            <select name="script" id="script" class="w-100 dropdown-style">
+                                <option value="script1">Point</option>
+                                <option value="script2">Percent</option>
+
+                            </select>
+
                         </b-form-group>
                         <b-form-group id="exampleInputGroup2"
                                       label-for="exampleInput2">
@@ -90,5 +92,16 @@ export default {
     /* cursor: pointer; */
     width: 100px;
     height: 40px;
+}
+.dropdown-style {
+    color: #6c758e;
+    background-color: white;
+    padding: 0.375rem 0.75rem;
+    //border-color: #ced4da;
+    display: block;
+    width: 100%;
+    height: calc(2.25rem + 2px);
+    border: 1px solid #ced4da;
+    border-radius: 0.25rem;
 }
 </style>

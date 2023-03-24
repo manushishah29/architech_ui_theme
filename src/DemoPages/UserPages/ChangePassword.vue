@@ -7,51 +7,59 @@
 
                     <div class="modal-dialog w-100 mx-auto">
 
-                        <div class="modal-content">
-                            <h5 class="text-center mt-3">Change Password</h5>
-                            <div class="modal-body">
+                        <validation-observer ref="loginForm" #default="{ invalid }">
+                            <b-form @submit.prevent="onSubmit">
+                                <div class="modal-content">
+                                    <div class="modal-body">
+                                        <b-form-group id="exampleInputGroup1"
+                                                      label-for="exampleInput1">
+                                            <validation-provider name="OldPassword" rules="required|max:12|min:6" #default="{ errors }">
+                                                <label>New Password </label>
+                                                <b-form-input id="exampleInput1"
+                                                              v-model="old_password"
+                                                              type="password"
+                                                              :state="errors.length > 0 ? false : null"
+                                                              placeholder="Enter new password...">
+                                                </b-form-input>
+                                                <small class="text-danger">{{ errors[0] }}</small>
+                                            </validation-provider>
+                                        </b-form-group>
+                                        <b-form-group id="exampleInputGroup1"
+                                                      label-for="exampleInput1">
+                                            <validation-provider name="Password" rules="required|max:12|min:6" #default="{ errors }">
+                                                <label>New Password </label>
+                                                <b-form-input id="exampleInput1"
+                                                              v-model="password"
+                                                              type="password"
+                                                              :state="errors.length > 0 ? false : null"
+                                                              placeholder="Enter new password...">
+                                                </b-form-input>
+                                                <small class="text-danger">{{ errors[0] }}</small>
+                                            </validation-provider>
+                                        </b-form-group>
+                                        <b-form-group id="exampleInputGroup1"
+                                                      label-for="exampleInput1">
+                                            <validation-provider name="ResetPassword" rules="required|compare-password:@Password" #default="{ errors }">
+                                                <label>Reset New Password </label>
+                                                <b-form-input id="exampleInput1"
+                                                              v-model="reset_password"
+                                                              type="password"
+                                                              :state="errors.length > 0 ? false : null"
+                                                              placeholder="Enter reset new password...">
+                                                </b-form-input>
+                                                <small class="text-danger">{{ errors[0] }}</small>
+                                            </validation-provider>
+                                        </b-form-group>
 
-                                <b-form-group id="exampleInputGroup1"
-                                              label-for="exampleInput1"
-                                >
-                                    <Label for="exampleEmail">Old Password</Label>
-                                    <b-form-input id="exampleInput1"
-                                                  type="password"
-                                                  required
-                                                  placeholder="Enter Old Password...">
-                                    </b-form-input>
-                                    <Label for="exampleEmail">New Password</Label>
-                                    <b-form-input id="exampleInput1"
-                                                  type="password"
-                                                  required
-                                                  placeholder="Enter New Password...">
-                                    </b-form-input>
-                                </b-form-group>
-                                <b-form-group id="exampleInputGroup2"
-                                              label-for="exampleInput2">
-                                    <Label for="exampleEmail">Reset New Password</Label>
-                                    <b-form-input id="exampleInput2"
-                                                  type="password"
-                                                  required
-                                                  placeholder="Enter Reset New Password...">
-                                    </b-form-input>
-                                </b-form-group>
-                                <!--                                <b-form-checkbox name="check" id="exampleCheck">-->
-                                <!--                                    Keep me logged in-->
-                                <!--                                </b-form-checkbox>-->
-                                <!--                                <div class="divider"/>-->
-                                <!--                                <h6 class="mb-0">-->
-                                <!--                                    No account?-->
-                                <!--                                    <a href="javascript:void(0);" class="text-primary">Sign up now</a>-->
-                                <!--                                </h6>-->
-                            </div>
-                            <div class="modal-footer clearfix">
-
-                                <div class="float-right">
-                                    <b-button variant="primary" size="lg" @click="getDashboard">Change Password</b-button>
+                                    </div>
+                                    <div class="modal-footer clearfix">
+                                        <div class="float-right">
+                                            <b-button variant="primary" type="submit" size="lg">Change Password</b-button>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                        </div>
+                            </b-form>
+                        </validation-observer>
                     </div>
                     <div class="text-center text-white opacity-8 mt-3">
                         Copyright &copy; Kavisha 2023
@@ -63,15 +71,42 @@
 </template>
 
 <script>
+import {ValidationObserver,ValidationProvider} from "vee-validate";
+import {required, max, min} from "@/lib/Validators";
 export default {
     name: "ChangePassword",
+    data(){
+        return{
+            required,
+            password: '',
+            old_password:'',
+            reset_password:'',
+            max,
+            min
+        }
+    },
+    components:{
+        ValidationProvider,
+        ValidationObserver,
+
+    },
     methods:
         {
             getDashboard(){
                 this.$router.push({
                     name:'Dashboard',
                 })
-            }
+            },
+            async onSubmit(){
+                const result = await this.$refs.loginForm.validate();
+                // eslint-disable-next-line no-console
+                console.log('Submit successfull', result)
+                if(result){
+                    this.getDashboard()
+                }
+
+                // this.getDashboard()
+            },
         }
 }
 </script>

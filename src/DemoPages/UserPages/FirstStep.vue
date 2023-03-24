@@ -16,11 +16,12 @@
                         <b-form-group id="exampleInputGroup2"
                                       label-for="exampleInput2">
                             <label>Select Script :</label>
-                            <b-dropdown id="dropdown-offset" offset="25" text="Select Script" class="w-100">
-                                <b-dropdown-item href="#">Script1</b-dropdown-item>
-                                <b-dropdown-item href="#">Script2</b-dropdown-item>
-                                <b-dropdown-item href="#">Script3</b-dropdown-item>
-                            </b-dropdown>
+                            <select name="script" id="script" class="w-100 dropdown-style">
+                                <option value="script1">Script1</option>
+                                <option value="script2">Script2</option>
+
+                            </select>
+
                         </b-form-group>
                         <b-form-group id="exampleInputGroup2"
                                       label-for="exampleInput2">
@@ -83,5 +84,22 @@ export default {
     /* cursor: pointer; */
     width: 100px;
     height: 40px;
+}
+.dropdown-style {
+    color: #6c758e;
+    background-color: white;
+    padding: 0.375rem 0.75rem;
+    //border-color: #ced4da;
+    display: block;
+    width: 100%;
+    height: calc(2.25rem + 2px);
+    border: 1px solid #ced4da;
+    border-radius: 0.25rem;
+}
+
+.btn-secondary:hover {
+    color: #212529;
+    background-color: white;
+    border-color: #ced4da;
 }
 </style>
