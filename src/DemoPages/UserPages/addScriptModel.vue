@@ -8,7 +8,7 @@
             @hide="closeModal"
         >
             <b-card>
-                <VuePerfectScrollbar class="scrollbar-container" v-once>
+<!--                <VuePerfectScrollbar class="scrollbar-container" v-once>-->
                 <form-wizard @on-complete="onComplete"
                              ref="wizard"
                              shape="circle" color="#20a0ff">
@@ -30,7 +30,7 @@
 
 
                 </form-wizard>
-                </VuePerfectScrollbar>
+<!--                </VuePerfectScrollbar>-->
             </b-card>
 
             <template #modal-footer>
@@ -53,7 +53,7 @@ import SecondStep from "./SecondStep.vue";
 import ThirdStep from "./ThirdStep.vue";
 import FourthStep from "./FourthStep.vue";
 import FifthStep from "./FifthStep.vue";
-import VuePerfectScrollbar from 'vue-perfect-scrollbar'
+// import VuePerfectScrollbar from 'vue-perfect-scrollbar'
 export default {
     name: "add-script-model",
     components: {
@@ -63,7 +63,7 @@ export default {
         ThirdStep,
         FourthStep,
         FifthStep,
-        VuePerfectScrollbar,
+        // VuePerfectScrollbar,
     },
 
     props: {
