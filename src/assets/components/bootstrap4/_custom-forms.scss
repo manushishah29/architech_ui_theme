@@ -173,6 +173,7 @@
       left: -($custom-switch-width + $custom-control-gutter);
       width: $custom-switch-width;
       pointer-events: all;
+      cursor: pointer;
       border-radius: $custom-switch-indicator-border-radius;
     }
 

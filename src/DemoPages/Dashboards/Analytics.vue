@@ -1,8 +1,8 @@
 <template>
     <div class="row">
-        <div class="col-md-6 col-xl-3"  style="cursor: pointer" @click="getManageOrder">
+        <div class="col-md-6 col-xl-3"   @click="getManageOrder">
             <div
-                class="card mb-3 widget-chart widget-chart2 text-left card-btm-border card-shadow-success border-success">
+                class="card mb-3 widget-chart widget-chart2 text-left card-btm-border card-shadow-success border-success" style="cursor: pointer">
                 <div class="widget-chat-wrapper-outer" >
                     <div class="widget-chart-content pt-3 pl-3 pb-1">
                         <div class="widget-chart-flex"  >

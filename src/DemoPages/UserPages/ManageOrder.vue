@@ -52,21 +52,21 @@
                 <template #cell(order_history)="data">
                     <b-link @click="toggleShowHistoryModel">{{data.value}}</b-link>
                 </template>
-                <template #cell(automation_switch)><b-form-checkbox switch size="lg" ></b-form-checkbox></template>
-            <template #cell(action)>
-                <b-dropdown no-caret class="p-0 mr-2" variant="link" right>
+                <template #cell(automation_switch)><b-form-checkbox switch ></b-form-checkbox></template>
+                <template #cell(action)>
+                    <b-dropdown no-caret variant="link">
                             <span slot="button-content">
                                   <font-awesome-icon icon="ellipsis-v" />
                             </span>
-                    <b-dropdown-item style="background: #429f4e ">Sell</b-dropdown-item>
-                    <b-dropdown-item style="background: #616dce">Buy</b-dropdown-item>
-                    <b-dropdown-item style="background: #5c5e7a ">Square Off</b-dropdown-item>
-                    <b-dropdown-item style="background: #b5f345">Edit</b-dropdown-item>
-                    <b-dropdown-item style="background: #c74d4d">Delete</b-dropdown-item>
-                </b-dropdown>
-            </template>
+                        <b-dropdown-item style="background: #429f4e ">Sell</b-dropdown-item>
+                        <b-dropdown-item style="background: #616dce">Buy</b-dropdown-item>
+                        <b-dropdown-item style="background: #5c5e7a ">Square Off</b-dropdown-item>
+                        <b-dropdown-item style="background: #b5f345">Edit</b-dropdown-item>
+                        <b-dropdown-item style="background: #c74d4d">Delete</b-dropdown-item>
+                    </b-dropdown>
+                </template>
             </b-table>
-<!--            <span class="text-muted"        >Showing {{ rows === 0 ? 0 : pageStart }} to        {{ pageEnd }}        of {{ rows }} Users      </span>-->
+            <!--            <span class="text-muted"        >Showing {{ rows === 0 ? 0 : pageStart }} to        {{ pageEnd }}        of {{ rows }} Users      </span>-->
             <b-pagination
                 v-model="currentPage"
                 :total-rows="rows"
@@ -75,18 +75,18 @@
                 align="right"
             ></b-pagination>
         </b-card>
-    <order-history-model v-if="orderHistoryModel"
-                         :order-history-modal="orderHistoryModel"
-                         @click="toggleShowHistoryModel"
-                         @close-modal="toggleShowHistoryModel">
+        <order-history-model v-if="orderHistoryModel"
+                             :order-history-modal="orderHistoryModel"
+                             @click="toggleShowHistoryModel"
+                             @close-modal="toggleShowHistoryModel">
 
-    </order-history-model>
-    <add-script-model v-if="addScriptModel"
-                      :add-script-model="addScriptModel"
-                      @click="toggleShowAddScriptModel"
-                      @close-modal="toggleShowAddScriptModel">
+        </order-history-model>
+        <add-script-model v-if="addScriptModel"
+                          :add-script-model="addScriptModel"
+                          @click="toggleShowAddScriptModel"
+                          @close-modal="toggleShowAddScriptModel">
 
-    </add-script-model>
+        </add-script-model>
     </div>
 
 </template>
@@ -154,12 +154,15 @@ export default {
                 {
                     key: 'automation_switch',
                     label: 'Automantion Switch',
-                    sortable: true
+                    sortable: true,
+
+
                 },
                 {
                     key: 'action',
                     label: 'Action',
-                    sortable: true
+                    sortable: true,
+                    thClass: "text-center"
                 },
             ],
             items: [

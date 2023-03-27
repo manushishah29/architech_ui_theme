@@ -84,7 +84,6 @@ export default {
     /* cursor: pointer; */
     width: 100px;
     height: 40px;
-
 }
 .dropdown-style {
     color: #6c758e;

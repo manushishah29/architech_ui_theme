@@ -13,7 +13,7 @@
                                     <div class="modal-body">
                                         <b-form-group id="exampleInputGroup1"
                                                       label-for="exampleInput1">
-                                            <validation-provider name="OldPassword" rules="required|min:6" #default="{ errors }">
+                                            <validation-provider name="Old Password" rules="required|min:6" #default="{ errors }">
                                                 <label>New Password </label>
                                                 <b-form-input id="exampleInput1"
                                                               v-model="old_password"
@@ -39,7 +39,7 @@
                                         </b-form-group>
                                         <b-form-group id="exampleInputGroup1"
                                                       label-for="exampleInput1">
-                                            <validation-provider name="ResetPassword" rules="required|compare-password:@Password" #default="{ errors }">
+                                            <validation-provider name="Reset Password" rules="required|compare-password:@Password" #default="{ errors }">
                                                 <label>Reset New Password </label>
                                                 <b-form-input id="exampleInput1"
                                                               v-model="reset_password"
