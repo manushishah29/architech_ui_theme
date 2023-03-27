@@ -81,7 +81,7 @@ export default {
             perPageOptions: [3, 5, 10],
             pageSize: 3,
             pageNo: 1,
-            sortBy: 'sr',
+            sortBy: 'script_name',
             sortDesc: false,
             perPage: 3,
             currentPage: 1,
@@ -124,22 +124,22 @@ export default {
                 {
                     no: 2,
                     script_name: 'Script2',
-                    expiry: '15-03-2023',
-                    update_date: '16-03-2023',
+                    expiry: '30-03-2023',
+                    update_date: '18-03-2023',
                     action: 'Action'
                 },
                 {
                     no: 3,
                     script_name: 'Script3',
-                    expiry: '15-03-2023',
-                    update_date: '16-03-2023',
+                    expiry: '31-03-2023',
+                    update_date: '20-03-2023',
                     action: 'Action'
                 },
                 {
                     no: 4,
                     script_name: 'Script4',
-                    expiry: '15-03-2023',
-                    update_date: '16-03-2023',
+                    expiry: '25-03-2023',
+                    update_date: '21-03-2023',
                     action: 'Action'
                 },
 

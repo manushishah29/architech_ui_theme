@@ -11,7 +11,7 @@
                                       label-for="exampleInput2">
                             <label>Instrument :</label>
                             <b-form-input id="exampleInput2"
-                                          type="number"
+                                          type="text"
                                           required
                                           placeholder="Enter Instrument">
                             </b-form-input>
@@ -46,7 +46,7 @@
                         </b-form-group>
                         <b-form-group id="exampleInputGroup2"
                                       label-for="exampleInput2">
-                            <label>Limit Order Buffer : :</label>
+                            <label>Limit Order Buffer :</label>
                             <b-form-input id="exampleInput2"
                                           type="number"
                                           required
@@ -100,7 +100,7 @@
                     </div>
                     <div class="col-md-6">
                         <b-form-group id="exampleInputGroup2"
-                                      label-for="exampleInput2">
+                                      elabl-for="exampleInput2">
                             <label>Disable Short-Cover  : </label>
                             <span class="d-flex mb-3"
                             >No<span class="mx-3">
@@ -146,7 +146,7 @@
                                       label-for="exampleInput2">
                             <label>Sell Order Quantity   :</label>
                             <b-form-input id="exampleInput2"
-                                          type="text"
+                                          type="number"
                                           required
                                           placeholder="EnterSell Order Quantity  ">
                             </b-form-input>
@@ -155,7 +155,7 @@
                                       label-for="exampleInput2">
                             <label>Short Order Quantity  :</label>
                             <b-form-input id="exampleInput2"
-                                          type="text"
+                                          type="number"
                                           required
                                           placeholder="Enter Short Order Quantity  ">
                             </b-form-input>
@@ -164,7 +164,7 @@
                                       label-for="exampleInput2">
                             <label>Cover Order Quantity   :</label>
                             <b-form-input id="exampleInput2"
-                                          type="text"
+                                          type="number"
                                           required
                                           placeholder="Enter Cover Order Quantity  ">
                             </b-form-input>
@@ -173,7 +173,7 @@
                                       label-for="exampleInput2">
                             <label>Button Horizontal Position   :</label>
                             <b-form-input id="exampleInput2"
-                                          type="text"
+                                          type="number"
                                           required
                                           placeholder="Enter Button Horizontal Position  ">
                             </b-form-input>
@@ -182,7 +182,7 @@
                                       label-for="exampleInput2">
                             <label>Button Vertical Position   :</label>
                             <b-form-input id="exampleInput2"
-                                          type="text"
+                                          type="number"
                                           required
                                           placeholder="Enter Button Vertical Position  ">
                             </b-form-input>

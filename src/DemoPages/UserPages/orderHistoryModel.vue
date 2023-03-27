@@ -51,22 +51,7 @@
                 class="mt-3"
                 responsive="sm"
             >
-                <template #cell(order_history)="data">
-                    <b-link @click="toggleShowHistoryModel">{{data.value}}</b-link>
-                </template>
-                <template #cell(automation_switch)><b-form-checkbox switch size="lg" style="cursor: pointer"></b-form-checkbox></template>
-                <template #cell(action)>
-                    <b-dropdown class="p-0 mr-2" variant="link" right>
-                            <span slot="button-content">
-                                  <font-awesome-icon icon="ellipsis-v" />
-                            </span>
-                        <b-dropdown-item>Sell</b-dropdown-item>
-                        <b-dropdown-item>Buy</b-dropdown-item>
-                        <b-dropdown-item>Square Off</b-dropdown-item>
-                        <b-dropdown-item>Edit</b-dropdown-item>
-                        <b-dropdown-item>Delete</b-dropdown-item>
-                    </b-dropdown>
-                </template>
+
             </b-table>
             <b-pagination
                 v-model="currentPage"
@@ -122,7 +107,7 @@ export default {
             perPageOptions: [3, 5, 10],
             pageSize: 3,
             pageNo: 1,
-            sortBy: 'sr',
+            sortBy: 'type',
             sortDesc: false,
             currentPage: 1,
             searchValue: '',
