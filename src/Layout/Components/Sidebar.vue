@@ -235,9 +235,11 @@ export default {
 
             if (this.isOpen) {
                 el.classList.add(className);
+                // this.isActive=true
 
             } else {
                 el.classList.remove(className);
+                // this.isActive=false
 
             }
         },
@@ -251,6 +253,7 @@ export default {
                 if (add === 'add') {
                     el.classList.add(className);
                     this.isActive=false
+
                 } else {
                     el.classList.remove(className);
                     this.isActive=true
