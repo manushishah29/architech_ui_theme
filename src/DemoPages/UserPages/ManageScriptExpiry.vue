@@ -154,9 +154,9 @@ export default {
         tableData() {
             if (this.searchValue) {
                 return this.items.filter(item => {
-                    return item.sr.toLocaleString().includes(this.searchValue) || item.script.includes(this.searchValue)
-                        || item.total_quantity.includes(this.searchValue) || item.created_date.includes(this.searchValue)
-                        || item.execute_date.includes(this.searchValue)
+                    return item.no.toLocaleString().includes(this.searchValue) || item.script_name.includes(this.searchValue)
+                        || item.expiry.includes(this.searchValue) || item.update_date.includes(this.searchValue)
+
                 })
             }
             return this.items
