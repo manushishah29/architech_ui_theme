@@ -35,7 +35,7 @@
                                 </b-form-group>
                                 <b-form-group id="exampleInputGroup2"
                                                   label-for="exampleInput2">
-                                    <validation-provider name="Password" rules="required|max:12|min:6" #default="{ errors }">
+                                    <validation-provider name="Password" rules="required|max:6" #default="{ errors }">
                                         <Label>Password</Label>
                                         <b-form-input id="exampleInput2"
                                                       type="password"

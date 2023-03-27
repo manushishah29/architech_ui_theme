@@ -7,7 +7,7 @@
             <b-breadcrumb-item :active="true"> Project1 > Manage Order</b-breadcrumb-item>
         </b-breadcrumb>
         <b-breadcrumb v-else-if="location === '/manageScriptExpiry'">
-        <b-breadcrumb-item :active="false"> Manage Script Anf Expiry </b-breadcrumb-item>
+        <b-breadcrumb-item :active="false"> Manage Script And Expiry </b-breadcrumb-item>
         </b-breadcrumb>
         <b-breadcrumb v-else-if="location === '/defaultTemplate'">
         <b-breadcrumb-item :active="false">Default Template </b-breadcrumb-item>

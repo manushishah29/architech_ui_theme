@@ -19,15 +19,10 @@
                         md="6"
                         class="d-flex align-items-center justify-content-start mb-1 mb-md-0"
                     >
-                        <label class="mt-2 mx-2">Show : </label>
-                        <v-select
-                            v-model="pageSize"
-                            :options="perPageOptions"
-                            :clearable="false"
-                            class="per-page-selector d-inline-block mx-50 mt-1"
-                            @input="changePerPage"
-                        />
-
+                        <label class="mx-1 mt-2">Show : </label>
+                        <select v-model="pageSize" class="dropdown-style">
+                            <option v-for="(item,index) in perPageOptions" :key="index" :value="item" >{{item}}</option>
+                        </select>
                     </b-col>
                     <!-- Search -->
                     <b-col
@@ -94,7 +89,7 @@
     </div>
 </template>
 <script>
-import vSelect from 'vue-select'
+// import vSelect from 'vue-select'
 import {
     BModal,
     // BButton, // BFormInput
@@ -107,7 +102,7 @@ export default {
         // BFormInput,
         BModal,
         // BButton,
-        vSelect,
+        // vSelect,
     },
 
     props: {
@@ -220,3 +215,17 @@ export default {
     },
 }
 </script>
+<style scoped lang="scss">
+.dropdown-style {
+    color: #6c758e;
+    background-color: white;
+    padding: 0.375rem 0.75rem;
+    cursor: pointer;
+    display: block;
+    height: 35px;
+    width: 90px;
+    border: 1px solid #ced4da;
+    border-radius: 0.25rem;
+}
+
+</style>

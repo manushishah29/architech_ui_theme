@@ -12,7 +12,8 @@
                             </span>
 
                             <button type="button" tabindex="0" class="dropdown-item" @click="getChangePassword" style="cursor: pointer">Change Password</button>
-                            <button type="button" tabindex="0" class="dropdown-item" @click="getDashboard" style="cursor: pointer">Logout</button>
+                            <button type="button" tabindex="0" class="dropdown-item" @click="getDashboard" style="cursor: pointer">
+                                Logout</button>
                             <!--                            <h6 tabindex="-1" class="dropdown-header">Header</h6>-->
                             <!--                            <button type="button" tabindex="0" class="dropdown-item">Actions</button>-->
                             <!--                            <div tabindex="-1" class="dropdown-divider"></div>-->

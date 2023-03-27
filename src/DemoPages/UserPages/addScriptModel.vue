@@ -10,7 +10,7 @@
         >
             <b-card>
 <!--                <VuePerfectScrollbar class="scrollbar-container" v-once>-->
-                <form-wizard @on-complete="onComplete"
+                <form-wizard
                              ref="wizard"
                              shape="circle" color="#20a0ff">
                     <tab-content title="Market Setting">

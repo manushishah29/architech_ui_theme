@@ -13,13 +13,9 @@
                         class="d-flex align-items-center justify-content-start mb-1 mb-md-0"
                     >
                         <label class="mt-2 mx-2">Show : </label>
-                        <v-select
-                            v-model="pageSize"
-                            :options="perPageOptions"
-                            :clearable="false"
-                            class="per-page-selector d-inline-block mx-50 mt-1 w-15"
-                            @input="changePerPage"
-                        />
+                        <select v-model="pageSize" class="dropdown-style">
+                            <option v-for="(item,index) in perPageOptions" :key="index" :value="item" >{{item}}</option>
+                        </select>
 
                     </b-col>
                     <!-- Search -->
@@ -56,7 +52,7 @@
                 <template #cell(order_history)="data">
                     <b-link @click="toggleShowHistoryModel">{{data.value}}</b-link>
                 </template>
-                <template #cell(automation_switch)><b-form-checkbox switch size="lg" style="cursor: pointer"></b-form-checkbox></template>
+                <template #cell(automation_switch)><b-form-checkbox switch size="lg" ></b-form-checkbox></template>
             <template #cell(action)>
                 <b-dropdown no-caret class="p-0 mr-2" variant="link" right>
                             <span slot="button-content">
@@ -97,7 +93,7 @@
 
 
 <script>
-import vSelect from 'vue-select'
+// import vSelect from 'vue-select'
 import orderHistoryModel from "./orderHistoryModel.vue";
 import addScriptModel from "@/DemoPages/UserPages/addScriptModel.vue";
 
@@ -105,7 +101,7 @@ export default {
 
     name: "ManageOrder",
     components: {
-        vSelect,
+        // vSelect,
         orderHistoryModel,
         addScriptModel,
     },
@@ -257,6 +253,17 @@ export default {
 }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
+.dropdown-style {
+    color: #6c758e;
+    background-color: white;
+    padding: 0.375rem 0.75rem;
+    cursor: pointer;
+    display: block;
+    height: 35px;
+    width: 90px;
+    border: 1px solid #ced4da;
+    border-radius: 0.25rem;
+}
 
 </style>

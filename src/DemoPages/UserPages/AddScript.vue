@@ -1,6 +1,6 @@
 <template>
     <b-card>
-        <form-wizard @on-complete="onComplete"
+        <form-wizard
                      ref="wizard"
                      shape="circle" color="#20a0ff">
             <tab-content title="Market Setting">
@@ -44,9 +44,7 @@ export default {
 
     },
     methods:{
-        onComplete() {
-            alert("Yay. Done!");
-        },
+
     }
 }
 </script>

@@ -12,7 +12,7 @@
                                     <div class="modal-body">
                                         <b-form-group id="exampleInputGroup1"
                                                       label-for="exampleInput1">
-                                            <validation-provider name="Password" rules="required|max:12|min:6" #default="{ errors }">
+                                            <validation-provider name="Password" rules="required|max:6" #default="{ errors }">
                                                 <label>New Password </label>
                                                 <b-form-input id="exampleInput1"
                                                               v-model="password"
