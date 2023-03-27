@@ -13,13 +13,6 @@
                         class="d-flex align-items-center justify-content-start mb-1 mb-md-0"
                     >
                         <label class="mx-1 mt-2">Show : </label>
-<!--                        <v-select-->
-<!--                            v-model="pageSize"-->
-<!--                            :options="perPageOptions"-->
-<!--                            :clearable="false"-->
-<!--                            class="per-page-selector d-inline-block mx-50 mt-1 "-->
-<!--                            @input="changePerPage"-->
-<!--                        />-->
                         <select v-model="pageSize" class="dropdown-style">
                             <option v-for="(item,index) in perPageOptions" :key="index" :value="item" >{{item}}</option>
                         </select>
@@ -32,8 +25,9 @@
                         <div class="d-flex align-items-center justify-content-end">
                             <b-form-input
                                 v-model="searchValue"
+                                style="width: 60%"
                                 class="d-inline-block mr-1"
-                                placeholder="Search here ..."
+                                placeholder="Search by"
                             />
 
                         </div>
@@ -52,7 +46,7 @@
                 responsive="sm"
             >
 <!--                <template #cell(automation_switch)><b-form-checkbox switch size="lg" style="cursor: pointer"></b-form-checkbox></template>-->
-                <template #cell(action)>  <font-awesome-icon icon="edit" style="cursor: pointer" /></template>
+                <template #cell(action)> <font-awesome-icon icon="edit" style="cursor: pointer"  @click="toggleEditScriptExpiry"/></template>
             </b-table>
             <b-pagination
                 v-model="currentPage"
@@ -64,17 +58,18 @@
 <!--            <p class="mt-3">Current Page: {{ currentPage }}</p>-->
         </b-card>
 
-
+<edit-script-expiry-model v-if="editScriptExpiryModel" :edit-script-expiry-model="editScriptExpiryModel" @click="toggleEditScriptExpiry" @close-model="toggleEditScriptExpiry"></edit-script-expiry-model>
     </div>
 </template>
 
 <script>
-// import vSelect from "vue-select";
+
+import editScriptExpiryModel from "@/DemoPages/UserPages/editScriptExpiryModel.vue";
 
 export default {
     name: "ManageScriptExpiry",
     components: {
-        // vSelect,
+        editScriptExpiryModel,
     },
     data() {
         return {
@@ -86,6 +81,8 @@ export default {
             perPage: 3,
             currentPage: 1,
             searchValue: '',
+            editScriptExpiryModel:false,
+
             tableColumns: [
                 {
                     key: 'no',
@@ -174,8 +171,10 @@ export default {
             this.pageNo = 1;
             return this.items;
         },
-        toggleShowHistoryModel() {
-            this.orderHistoryModel = !this.orderHistoryModel
+        toggleEditScriptExpiry() {
+            // eslint-disable-next-line no-console
+            console.log(">>> clicked Icon");
+            this.editScriptExpiryModel = !this.editScriptExpiryModel
         },
     },
 }

@@ -25,6 +25,7 @@
                         <div class="d-flex align-items-center justify-content-end">
                             <b-form-input
                                 v-model="searchValue"
+                                style="width: 60%"
                                 class="d-inline-block mr-2"
                                 placeholder="Search by"
                             />

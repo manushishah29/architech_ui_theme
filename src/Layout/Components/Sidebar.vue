@@ -1,8 +1,9 @@
 <template>
     <div class="app-sidebar sidebar-shadow" @mouseover="toggleSidebarHover('add','closed-sidebar-open')" @mouseleave="toggleSidebarHover('remove','closed-sidebar-open')">
         <div class="app-header__logo">
-            <!--            <div class="logo-src"/>-->
-            <div><h3><i>KAVISHA</i></h3></div>
+<!--            <div style=" width: 10px;"><h3><i>Kavisha</i></h3></div>-->
+            <div v-if="isActive===true"><h3><i>K</i></h3></div>
+            <div v-else><h3><i>KAVISHA</i></h3></div>
             <div class="header__pane ml-auto">
                 <button type="button" class="hamburger close-sidebar-btn hamburger--elastic" v-bind:class="{ 'is-active' : isOpen }" @click="toggleBodyClass('closed-sidebar')">
                     <span class="hamburger-box">
@@ -33,9 +34,10 @@ export default {
         return {
             isOpen: false,
             sidebarActive: false,
+            isActive:false,
             menu:[
                 {
-                    icon: 'pe-7s-rocket',
+                    icon: 'pe-7s-home',
                     title: 'Dashboard',
                     href: '/dashboard',
                 },
@@ -233,8 +235,10 @@ export default {
 
             if (this.isOpen) {
                 el.classList.add(className);
+
             } else {
                 el.classList.remove(className);
+
             }
         },
         toggleSidebarHover(add, className) {
@@ -246,8 +250,10 @@ export default {
             if (this.windowWidth > '992') {
                 if (add === 'add') {
                     el.classList.add(className);
+                    this.isActive=false
                 } else {
                     el.classList.remove(className);
+                    this.isActive=true
                 }
             }
         },
