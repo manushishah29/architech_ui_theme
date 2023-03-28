@@ -3,7 +3,7 @@
             <b-breadcrumb-item :active="false">Dashboard</b-breadcrumb-item>
         </b-breadcrumb>
         <b-breadcrumb v-else-if="location === '/project1/manageOrder'">
-            <b-breadcrumb-item href="/dashboard" :active="false"> Dashboard </b-breadcrumb-item>
+            <b-breadcrumb-item :active="false" @click="getDashboard"> Dashboard </b-breadcrumb-item>
             <b-breadcrumb-item :active="true"> Project1 > Manage Order</b-breadcrumb-item>
         </b-breadcrumb>
         <b-breadcrumb v-else-if="location === '/manageScriptExpiry'">
@@ -22,6 +22,14 @@ export default {
         return{
             location: window.location.pathname,
             show: true
+        }
+    },
+    methods:{
+        getDashboard()
+        {
+            this.$router.push({
+                name:'Dashboard'
+            })
         }
     },
     watch: {

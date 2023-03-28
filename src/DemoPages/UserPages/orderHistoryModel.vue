@@ -19,10 +19,11 @@
                         md="6"
                         class="d-flex align-items-center justify-content-start mb-1 mb-md-0"
                     >
-                        <label class="mx-1 mt-2">Show : </label>
+                        <label class="mx-1 mt-2">Show </label>
                         <select v-model="pageSize" class="dropdown-style">
                             <option v-for="(item,index) in perPageOptions" :key="index" :value="item" >{{item}}</option>
                         </select>
+                        <label class="mt-2 mx-2">Entries </label>
                     </b-col>
                     <!-- Search -->
                     <b-col
@@ -48,18 +49,20 @@
                 :sort-desc.sync="sortDesc"
                 :per-page="pageSize"
                 :current-page="currentPage"
-                class="mt-3"
+                class="mt-3 table table-bordered"
                 responsive="sm"
             >
+                <template #cell(type)="data"><div class="text-wrap ">{{data.value}}</div></template>
 
             </b-table>
-            <b-pagination
-                v-model="currentPage"
-                :total-rows="rows"
-                :per-page="pageSize"
-                aria-controls="my-table"
-                align="right"
-            ></b-pagination>
+                <b-pagination
+                    v-model="currentPage"
+                    :total-rows="rows"
+                    :per-page="pageSize"
+                    class="mt-2"
+                    aria-controls="my-table"
+                    align="right"
+                ></b-pagination>
         </b-card></div>
         <template #modal-footer>
             <div>

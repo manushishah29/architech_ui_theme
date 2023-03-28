@@ -93,8 +93,6 @@ export default {
 
        async onSubmit(){
             const result = await this.$refs.loginForm.validate();
-            // eslint-disable-next-line no-console
-            console.log('Submitted SuccessFully', result)
            if(result){
                this.getDashboard()
            }

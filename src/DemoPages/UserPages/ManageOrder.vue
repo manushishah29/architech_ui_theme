@@ -12,10 +12,11 @@
                         md="6"
                         class="d-flex align-items-center justify-content-start mb-1 mb-md-0"
                     >
-                        <label class="mt-2 mx-2">Show : </label>
+                        <label class="mt-2 mx-2">Show </label>
                         <select v-model="pageSize" class="dropdown-style">
                             <option v-for="(item,index) in perPageOptions" :key="index" :value="item" >{{item}}</option>
                         </select>
+                        <label class="mt-2 mx-2">Entries </label>
 
                     </b-col>
                     <!-- Search -->
@@ -29,7 +30,7 @@
                                 class="d-inline-block mr-2"
                                 placeholder="Search by"
                             />
-                            <button type="button" class="btn-shadow d-inline-flex align-items-center btn btn-success w-25" @click="toggleShowAddScriptModel">
+                            <button type="button" class="btn-shadow d-inline-flex align-items-center btn btn-success w-22" @click="toggleShowAddScriptModel">
                                 <font-awesome-icon class="mr-2" icon="plus"/>
                                 Add Script
                             </button>
@@ -47,23 +48,28 @@
                 :sort-desc.sync="sortDesc"
                 :per-page="pageSize"
                 :current-page="currentPage"
-                class="mt-3"
+                class="mt-3 table table-bordered"
                 responsive="sm"
             >
+                <template #cell(script)="data"><div class="text-wrap">{{data.value}}</div></template>
                 <template #cell(order_history)="data">
                     <b-link @click="toggleShowHistoryModel">{{data.value}}</b-link>
                 </template>
-                <template #cell(automation_switch)><b-form-checkbox switch ></b-form-checkbox></template>
+                <template #cell(automation_switch)="data">
+                    <div>
+                        <b-form-checkbox switch @click.native.prevent="showAlert(data.index)" v-model="data.value"></b-form-checkbox>
+                    </div>
+                </template>
                 <template #cell(action)>
-                    <b-dropdown no-caret variant="link">
+                    <b-dropdown no-caret variant="link" >
                             <span slot="button-content">
                                   <font-awesome-icon icon="ellipsis-v" />
                             </span>
-                        <b-dropdown-item style="background: #429f4e ">Sell</b-dropdown-item>
-                        <b-dropdown-item style="background: #616dce">Buy</b-dropdown-item>
-                        <b-dropdown-item style="background: #5c5e7a ">Square Off</b-dropdown-item>
-                        <b-dropdown-item style="background: #b5f345">Edit</b-dropdown-item>
-                        <b-dropdown-item style="background: #c74d4d">Delete</b-dropdown-item>
+                            <b-dropdown-item><h5><b-badge style="background: #429f4e">Buy</b-badge></h5> </b-dropdown-item>
+                            <b-dropdown-item><h5><b-badge style="background: #616dce">Sell</b-badge></h5></b-dropdown-item>
+                            <b-dropdown-item><h5><b-badge style="background: #5c5e7a ">Square off</b-badge></h5></b-dropdown-item>
+                            <b-dropdown-item> <h5><b-badge style="background: #b5f345;">Edit</b-badge></h5></b-dropdown-item>
+                            <b-dropdown-item><h5><b-badge style="background: #c74d4d">Delete</b-badge></h5></b-dropdown-item>
                     </b-dropdown>
                 </template>
             </b-table>
@@ -72,6 +78,7 @@
                 v-model="currentPage"
                 :total-rows="rows"
                 :per-page="pageSize"
+                class="mt-2"
                 aria-controls="my-table"
                 align="right"
             ></b-pagination>
@@ -94,15 +101,16 @@
 
 
 <script>
-// import vSelect from 'vue-select'
+
 import orderHistoryModel from "./orderHistoryModel.vue";
 import addScriptModel from "@/DemoPages/UserPages/addScriptModel.vue";
+
 
 export default {
 
     name: "ManageOrder",
     components: {
-        // vSelect,
+
         orderHistoryModel,
         addScriptModel,
     },
@@ -111,8 +119,10 @@ export default {
             // $refs: {
             //     orderHistoryModel,
             // },
+            index:0,
 
             orderHistoryModel:false,
+            switchModel:false,
             addScriptModel:false,
             perPageOptions: [3, 5, 10],
             pageSize: 3,
@@ -174,7 +184,7 @@ export default {
                     created_date: '15-03-2023',
                     order_history:'21-03-2023',
                     execute_date: '16-03-2023',
-                    automation_switch: 'switch',
+                    automation_switch: false,
                     action: 'Action'
                 },
                 {
@@ -184,7 +194,7 @@ export default {
                     created_date: '17-03-2023',
                     order_history:'20-03-2023',
                     execute_date: '25-03-2023',
-                    automation_switch: 'switch',
+                    automation_switch: false,
                     action: 'Action'
                 },
                 {
@@ -194,7 +204,7 @@ export default {
                     created_date: '20-03-2023',
                     order_history:'27-03-2023',
                     execute_date: '17-03-2023',
-                    automation_switch: 'switch',
+                    automation_switch: false,
                     action: 'Action'
                 },
                 {
@@ -204,7 +214,7 @@ export default {
                     created_date: '11-03-2023',
                     order_history:'20-03-2023',
                     execute_date: '18-03-2023',
-                    automation_switch: 'switch',
+                    automation_switch: false,
                     action: 'Action'
                 },
             ]
@@ -253,11 +263,64 @@ export default {
         toggleShowAddScriptModel() {
             this.addScriptModel = !this.addScriptModel
         },
+        showAlert(itemIndex) {
+            // Use sweetalert2
+            // eslint-disable-next-line no-console
+            console.log("Hello from sweet alert")
+            this.$swal({
+                // title: 'Are you sure?',
+                // text: "Are you sure want to check this item!",
+                // type: 'warning',
+                // showCancelButton: true,
+                // confirmButtonColor: '#56CC9D',
+                // cancelButtonColor: 'primary',
+                // confirmButtonText: 'Yes Check it!',
+                title: 'Are you sure?',
+                icon: 'info',
+                html: 'Are you sure want to check this item!',
+                showCloseButton: true,
+                showCancelButton: true,
+                focusConfirm: false,
+                confirmButtonText: 'Yes Check it!',
+                confirmButtonColor: '#56CC9D',
+                cancelButtonColor: 'primary',
+
+            }).then((result) => {
+                // eslint-disable-next-line no-console
+                this.items.map((item, index) => {
+                    if (itemIndex === index) {
+                        item.automation_switch = result.isConfirmed
+                    }
+                    return item
+                })
+            })
+        },
     },
 }
 </script>
 
-<style scoped lang="scss">
+<style>
+.dropdown-item {
+    display: block;
+    width: 100%;
+    padding: 0rem 0.5rem;
+    clear: both;
+    font-weight: 400;
+    color: #212529;
+    text-align: inherit;
+    white-space: nowrap;
+    background-color: transparent;
+    border: 0;
+}
+.dropdown-menu {
+    min-width: 8rem;
+    padding: 0.35rem 0;
+}
+.badge{
+    display: flex;
+    flex-direction: column;
+    text-transform: capitalize;
+}
 .dropdown-style {
     color: #6c758e;
     background-color: white;
@@ -269,5 +332,4 @@ export default {
     border: 1px solid #ced4da;
     border-radius: 0.25rem;
 }
-
 </style>

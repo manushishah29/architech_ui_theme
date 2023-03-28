@@ -12,6 +12,8 @@ import { library } from '@fortawesome/fontawesome-svg-core'
 import {faUserSecret, faShoppingCart, faEllipsisV, faPlus, faEdit} from '@fortawesome/free-solid-svg-icons'
 import VueStepWizard from 'vue-step-wizard'
 import 'vue-step-wizard/dist/vue-step-wizard.css';
+import VueSweetalert2 from 'vue-sweetalert2';
+import 'sweetalert2/dist/sweetalert2.min.css';
 
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
@@ -21,6 +23,7 @@ Vue.config.productionTip = false;
 
 Vue.use(BootstrapVue);
 Vue.use(VueStepWizard);
+Vue.use(VueSweetalert2);
 
 Vue.component('default-layout', Default);
 Vue.component('userpages-layout', Pages);

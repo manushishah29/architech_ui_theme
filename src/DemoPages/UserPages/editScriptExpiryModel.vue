@@ -3,7 +3,7 @@
         <b-modal
             v-model="showModal"
             size="lg"
-            title="Order History"
+            title="Manage Script And Expiry"
             hide-backdrop
             @hide="closeModal"
         >

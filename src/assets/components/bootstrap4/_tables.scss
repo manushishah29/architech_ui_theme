@@ -4,7 +4,7 @@
 
 .table {
   width: 100%;
-  margin-bottom: $spacer;
+  //margin-bottom: $spacer;
   background-color: $table-bg; // Reset for nesting within parents with `background-color`.
 
   th,
@@ -16,7 +16,7 @@
 
   thead th {
     vertical-align: bottom;
-    border-bottom: (2 * $table-border-width) solid $table-border-color;
+    border-bottom: 4px solid #cfd6d1;
   }
 
   tbody + tbody {
@@ -50,7 +50,7 @@
 
   th,
   td {
-    border: $table-border-width solid $table-border-color;
+    border: 2px solid #d0ded4;
   }
 
   thead {

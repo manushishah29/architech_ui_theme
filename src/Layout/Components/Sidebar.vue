@@ -2,7 +2,7 @@
     <div class="app-sidebar sidebar-shadow" @mouseover="toggleSidebarHover('add','closed-sidebar-open')" @mouseleave="toggleSidebarHover('remove','closed-sidebar-open')">
         <div class="app-header__logo">
 <!--            <div style=" width: 10px;"><h3><i>Kavisha</i></h3></div>-->
-            <div v-if="isActive===true"><h3><i>K</i></h3></div>
+            <div v-if="isActive"><h3><i>K</i></h3></div>
             <div v-else><h3><i>KAVISHA</i></h3></div>
             <div class="header__pane ml-auto">
                 <button type="button" class="hamburger close-sidebar-btn hamburger--elastic" v-bind:class="{ 'is-active' : isOpen }" @click="toggleBodyClass('closed-sidebar')">
@@ -232,15 +232,12 @@ export default {
         toggleBodyClass(className) {
             const el = document.body;
             this.isOpen = !this.isOpen;
-
             if (this.isOpen) {
                 el.classList.add(className);
-                // this.isActive=true
-
+                this.isActive = el.classList.contains('closed-sidebar') && !el.classList.contains('closed-sidebar-open')
             } else {
                 el.classList.remove(className);
-                // this.isActive=false
-
+                this.isActive = el.classList.contains('closed-sidebar') && !el.classList.contains('closed-sidebar-open')
             }
         },
         toggleSidebarHover(add, className) {
@@ -248,15 +245,32 @@ export default {
             this.sidebarActive = !this.sidebarActive;
 
             this.windowWidth = document.documentElement.clientWidth;
-
             if (this.windowWidth > '992') {
                 if (add === 'add') {
                     el.classList.add(className);
-                    this.isActive=false
+                    this.isActive = el.classList.contains('closed-sidebar') && !el.classList.contains('closed-sidebar-open')
+                    // eslint-disable-next-line no-console
+                    // if(this.isOpen)
+                    // {
+                    //     this.isActive=true
+                    // }
+                    // else{
+                    //     this.isActive=false
+                    // }
 
                 } else {
                     el.classList.remove(className);
-                    this.isActive=true
+                    this.isActive = el.classList.contains('closed-sidebar') && !el.classList.contains('closed-sidebar-open')
+                    // eslint-disable-next-line no-console
+                    // if(this.isOpen)
+                    // {
+                    //     this.isActive=true
+                    // }
+                    // else{
+                    //     this.isActive=false
+                    // }
+
+
                 }
             }
         },
@@ -267,6 +281,7 @@ export default {
 
             if (this.windowWidth < '1350') {
                 el.classList.add('closed-sidebar', 'closed-sidebar-md');
+
             } else {
                 el.classList.remove('closed-sidebar', 'closed-sidebar-md');
             }
