@@ -10,10 +10,12 @@
                                     <img width="42" class="rounded-circle" src="@/assets/images/avatars/8.jpg" alt="">
                                 </div>
                             </span>
+                            <div class="custom-dropdown">
+                                <button type="button" tabindex="0" class="dropdown-item" @click="getChangePassword" style="cursor: pointer">Change Password</button>
+                                <button type="button" tabindex="0" class="dropdown-item" @click="getDashboard" style="cursor: pointer">
+                                    Logout</button>
+                            </div>
 
-                            <button type="button" tabindex="0" class="dropdown-item" @click="getChangePassword" style="cursor: pointer">Change Password</button>
-                            <button type="button" tabindex="0" class="dropdown-item" @click="getDashboard" style="cursor: pointer">
-                                Logout</button>
                             <!--                            <h6 tabindex="-1" class="dropdown-header">Header</h6>-->
                             <!--                            <button type="button" tabindex="0" class="dropdown-item">Actions</button>-->
                             <!--                            <div tabindex="-1" class="dropdown-divider"></div>-->
@@ -93,4 +95,14 @@ export default {
 
 
 </script>
+<style>
+.custom-dropdown {
+    float: left;
+    min-width: 15rem;
+    padding: 0.3rem 0.5rem;
+    font-size: 1rem;
+    color: #5a5a5a;
+    text-align: left;
 
+}
+</style>
